@@ -21,6 +21,15 @@ public class TopBanner
     @FindBy(how = How.CLASS_NAME, using = "login")
     private WebElement login;
 
+    @FindBy(how = How.CLASS_NAME, using = "logo img-responsive")
+    private WebElement responsiveLogo;
+
+    @FindBy(how = How.ID, using = "search_query_top")
+    private WebElement search;
+
+    @FindBy(how = How.NAME, using = "submit_search")
+    private WebElement submitSearch;
+
     public TopBanner(WebDriver driver)
     {
         this.driver = driver;
@@ -31,9 +40,10 @@ public class TopBanner
         responsiveImage.click();
     }
 
-    public void ShopNo()
+    public String ShopNo()
     {
-        shopPhoneNo.getText();
+        String phone = shopPhoneNo.getText();
+        return phone;
     }
 
     public void ContactUs()
@@ -44,5 +54,21 @@ public class TopBanner
     public void Login()
     {
         login.click();
+    }
+
+    public void Logo()
+    {
+        responsiveLogo.click();
+    }
+
+    public void Search(String searchCriteria)
+    {
+        search.clear();
+        search.sendKeys(searchCriteria);
+    }
+
+    public void SubmitSearch()
+    {
+        submitSearch.click();
     }
 }
